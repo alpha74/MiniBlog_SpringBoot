@@ -1,9 +1,6 @@
 package com.alpha74.rest.webserver.springrestweb;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class HealthStatusController
@@ -14,7 +11,7 @@ public class HealthStatusController
     @GetMapping(path="/healthStatus")
     public String healthStatus()
     {
-        return "Health:OK" ;
+        return "status:OK" ;
     }
 
     /*
@@ -25,5 +22,14 @@ public class HealthStatusController
     public HealthStatusBean healthStatusBean()
     {
         return new HealthStatusBean("OK") ;
+    }
+
+    /*
+        Usage of Path Variables
+     */
+    @GetMapping(path="/healthStatusBean/{flag}")
+    public HealthStatusBean healthStatusBeanVar(@PathVariable String flag)
+    {
+        return new HealthStatusBean(String.format("OK:%s", flag)) ;
     }
 }
