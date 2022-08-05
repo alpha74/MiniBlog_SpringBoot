@@ -1,5 +1,6 @@
-package com.alpha74.rest.webserver.springrestweb;
+package com.alpha74.rest.webserver.springrestweb.healthStatus;
 
+import com.alpha74.rest.webserver.springrestweb.healthStatus.HealthStatusBean;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

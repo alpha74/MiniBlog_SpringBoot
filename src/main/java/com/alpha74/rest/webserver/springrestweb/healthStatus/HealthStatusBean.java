@@ -1,4 +1,4 @@
-package com.alpha74.rest.webserver.springrestweb;
+package com.alpha74.rest.webserver.springrestweb.healthStatus;
 
 public class HealthStatusBean {
 
