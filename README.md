@@ -26,11 +26,21 @@
 
 #### Enable Spring Debug mode
 
-- In `application.properties`, add this code
+- In `application.properties`, add this:
 
 ```
 logging.level.org.springframework = debug
 ``` 
+
+#### Making DateUtil date to not return timestamp
+
+- This value is `false` now by default.
+- In `application;properties`, add this:
+
+```
+spring.jackson.serialization.write-dates-as-timestamps=false
+```
+
 
 
 ----
