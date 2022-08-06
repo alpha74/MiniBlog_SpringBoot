@@ -1,4 +1,4 @@
-# Users and Posts App
+# Users and Posts APIs
 
 ## Sping Boot and REST
 
@@ -43,9 +43,4 @@ spring.jackson.serialization.write-dates-as-timestamps=false
 
 
 
-----
-
-## Theory
-
-### Dispatcher Servlet
 
