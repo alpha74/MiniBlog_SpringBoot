@@ -79,4 +79,22 @@ public class UserResource
          */
         return ResponseEntity.created(location).build() ;
     }
+
+    /*
+        Returns 200 Code when user is deleted.
+        Else, it returns 404 code when user is not found.
+     */
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable int id)
+    {
+        User user = service.deleteById(id) ;
+
+        /*
+            Throwing Exception here will cause server to return 500 Error code if
+              we have not specified 404 error code to be returned explicitly in
+              its definition.
+         */
+        if( user == null )
+            throw new UserNotFoundException("id-" + id) ;
+    }
 }
