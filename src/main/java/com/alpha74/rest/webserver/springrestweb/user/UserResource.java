@@ -38,7 +38,17 @@ public class UserResource
     @GetMapping("/users/{id}")
     public User getUser(@PathVariable int id)
     {
-        return service.findOne(id) ;
+        User user = service.findOne(id) ;
+
+        /*
+            Throwing Exception here will cause server to return 500 Error code if
+              we have not specified 404 error code to be returned explicitly in
+              its definition.
+         */
+        if( user == null )
+            throw new UserNotFoundException("id-" + id) ;
+
+        return user ;
     }
 
     /*
@@ -64,7 +74,7 @@ public class UserResource
                 .buildAndExpand(savedUser.getId()).toUri() ;
 
         /*
-            This will cause 201 Created status to be returned.
+            .created() will cause 201 Created status to be returned.
             The response header 'location' will contain the URI of saved user.
          */
         return ResponseEntity.created(location).build() ;
