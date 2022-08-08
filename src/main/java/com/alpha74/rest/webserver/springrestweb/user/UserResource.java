@@ -1,6 +1,10 @@
 package com.alpha74.rest.webserver.springrestweb.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.EntityModel;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.*;
+
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -35,9 +39,11 @@ public class UserResource
     /*
         Find one user from list of users
         GET users/{id}
+
+        - Here, we are now returning EntityModel instead of User, to implement HATEOAS
      */
     @GetMapping("/users/{id}")
-    public User getUser(@PathVariable int id)
+    public EntityModel<User> getUser(@PathVariable int id)
     {
         User user = service.findOne(id) ;
 
@@ -49,7 +55,16 @@ public class UserResource
         if( user == null )
             throw new UserNotFoundException("id-" + id) ;
 
-        return user ;
+        EntityModel<User> model = EntityModel.of(user) ;
+
+        // Building link to getAllUsers() API
+        WebMvcLinkBuilder linkToAllUsers =
+                linkTo(methodOn( this.getClass() ).getAllUsers()) ;
+
+        // Adding link to response
+        model.add(linkToAllUsers.withRel("all-users"));
+
+        return model ;
     }
 
     /*
