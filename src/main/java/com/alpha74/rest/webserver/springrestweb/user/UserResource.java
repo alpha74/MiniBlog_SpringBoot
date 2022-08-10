@@ -28,6 +28,9 @@ public class UserResource
     /*
         Get all users from list of users
         GET /users
+
+        - Adding "jackson-dataformat-xml" package in pom.xml can make this to return XML
+          when header contains "Accept:application/xml". (Called Content Negotiation)
      */
     @GetMapping("/users")
     public List<User> getAllUsers()
