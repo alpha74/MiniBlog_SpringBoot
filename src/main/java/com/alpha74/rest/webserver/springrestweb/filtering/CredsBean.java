@@ -1,5 +1,6 @@
 package com.alpha74.rest.webserver.springrestweb.filtering;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import net.minidev.json.annotate.JsonIgnore;
 
@@ -19,9 +20,13 @@ import net.minidev.json.annotate.JsonIgnore;
         Takes "values" which are to be excluded
         When using this, we are hardcoding the values which are to be excluded.
 
+        Eg: @JsonIgnoreProperties(value={"password"})
+
+
+     3. Using Dynamic Filters. Eg: "CredsBeanFilter" used here.
  */
 
-@JsonIgnoreProperties(value={"password"})
+@JsonFilter("CredsBeanFilter")
 public class CredsBean
 {
     private String email ;
