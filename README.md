@@ -2,6 +2,7 @@
 
 ## Spring Boot with REST
 
+#### [Notes](NOTES.md)
 
 ### APIs
 
