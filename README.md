@@ -41,26 +41,6 @@
 {"id":1,"name":"Jackson","birthDate":"2022-08-06T07:42:11.033+00:00"}
 ```
 
-----
-
-## Tips
-
-#### Enable Spring Debug mode
-
-- In `application.properties`, add this:
-
-```
-logging.level.org.springframework = debug
-``` 
-
-#### Making DateUtil date to not return timestamp
-
-- This value is `false` now by default.
-- In `application.properties`, add this:
-
-```
-spring.jackson.serialization.write-dates-as-timestamps=false
-```
 
 
 
