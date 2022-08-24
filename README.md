@@ -1,4 +1,4 @@
-# Users and Posts APIs
+# MiniBlog Backend APIs
 
 ## Spring Boot with REST
 
